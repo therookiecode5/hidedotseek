@@ -1,0 +1,19 @@
+body {
+	overflow: hidden;
+}
+
+canvas {
+	display: block;
+}
+
+#name {
+	position:absolute;
+	top:20%;
+	left:20%;
+}
+
+#result{
+	position:absolute;
+	top:30%;
+	left:40%;
+}
