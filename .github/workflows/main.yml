@@ -9,7 +9,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '14'
-      - run: npm install jquery
-
-
-
+      - run: npm install compression
