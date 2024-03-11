@@ -8,7 +8,10 @@ var Obstacle = require("./Obstacle").Obstacle;
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);	
+var io = require('socket.io')(http);
+const httpServer = require("http").createServer();
+const io = require("socket.io")(httpServer, {
+});
 var compression = require('compression');
 
 /**************************************************
@@ -50,8 +53,8 @@ initgame();
 /**************************************************
 ** GAME EVENT HANDLERS
 **************************************************/
-io.on('connection', function(socket){
-	util.log("New player has connected: "+socket.id);
+io.on("connection", (socket) => {
+  util.log("New player has connected: "+socket.id);
 
 	// Listen for client disconnected
 	socket.on("disconnect", onClientDisconnect);
@@ -62,7 +65,8 @@ io.on('connection', function(socket){
 	// Listen for move player message
 	socket.on("move player", onMovePlayer);
 	socket.on("my name", onSetName);
-  });
+});
+
 function initgame(){
 	gameOver=false;
 	zombie=0;
@@ -316,7 +320,7 @@ function playerById(id) {
 	return false;
 };
 
-
+httpServer.listen(3000);
 /**************************************************
 ** RUN THE GAME
 **************************************************/
