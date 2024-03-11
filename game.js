@@ -7,11 +7,9 @@ var Pillar = require("./Pillar").Pillar;
 var Obstacle = require("./Obstacle").Obstacle;
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-const httpServer = require("http").createServer();
-const io = require("socket.io")(httpServer, {
-});
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const httpServer = createServer();
 var compression = require('compression');
 
 /**************************************************
@@ -31,7 +29,7 @@ function init() {
 	players = [];
 	obstacles = [];
 var port=80;
-http.listen(port, function(){
+httpServer.listen(port, function(){
   console.log('listening on *: '+port);
 });
 	
