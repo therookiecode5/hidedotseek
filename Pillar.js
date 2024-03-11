@@ -8,7 +8,7 @@ var Pillar = function(startX, startY, inWidth, inHeight){
 		width = inWidth,
 		height = inHeight,
 		image,
-		visible = false;
+		visible = true;
 	
 	// Getter and Setter
 	var setWidth = function(newWidth){
