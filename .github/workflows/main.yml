@@ -1,1 +1,2 @@
-npm install socket.io
+            - name: turbostart-npm
+  uses: clutchd/turbostart-npm@v3.0.1
