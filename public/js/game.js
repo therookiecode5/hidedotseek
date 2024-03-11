@@ -36,7 +36,7 @@ function init() {
 	localPlayer = new Player(startX, startY);
 
 	// Initialise socket connection
-	const socket = io();
+	socket = io();
 	// Initialise remote players array
 	remotePlayers = [];
 	obstacles = [];
