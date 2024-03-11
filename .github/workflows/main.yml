@@ -1,4 +1,4 @@
-name: main
+name: Install Dependencies
 on: [push]
 jobs:
   production-deploy:
@@ -9,4 +9,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '14'
-      - run: npm install 
+      - run: npm install socket.io
+
+
