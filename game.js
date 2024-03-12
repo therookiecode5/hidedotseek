@@ -5,11 +5,12 @@ var util = require("util");
 var Player = require("./Player.js").Player;
 var Pillar = require("./Pillar.js").Pillar;
 var Obstacle = require("./Obstacle.js").Obstacle;
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
-const httpServer = createServer();
+const http = require('http');
+const server = http.createServer(app);
 var compression = require('compression');
 
 /**************************************************
