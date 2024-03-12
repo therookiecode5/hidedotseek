@@ -29,7 +29,7 @@ function init() {
 	// Create an empty array to store players
 	players = [];
 	obstacles = [];
-var port=3000;
+var port=80;
 httpServer.listen(port, function(){
   console.log('listening on *: '+port);
 });
