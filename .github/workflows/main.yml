@@ -9,4 +9,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '14'
-      - run: npm install compress
+      - run: | 
+          npm init
+          ...
+          package name: @YOUR-USERNAME/YOUR-REPOSITORY
+          ...
+          test command: exit 0
+          ...
