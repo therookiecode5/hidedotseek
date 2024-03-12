@@ -9,7 +9,10 @@
 		<link rel="stylesheet" href="style/reset.css">
 		<link rel="stylesheet" href="style/game.css">
 	</head>
-	
+	<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
 	<body>
 		<canvas id="gameCanvas"></canvas>
 		<div id="name">What is your name: <input id="name_text"><button id="send_name">Send</button></div>
