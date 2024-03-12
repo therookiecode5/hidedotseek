@@ -39,9 +39,8 @@ app.use(compression({
   threshold: 512
 }))
 app.use(express.static(__dirname + '/public'));
-app.get('/', function(req, res){
-  res.sendfile('./public/index.html');
-	res.send('<h1>Helloworld</h1>');
+app.get('/', (req, res) => {
+  res.sendFile('./public/index.html');
 });
 initgame();
 
