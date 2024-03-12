@@ -41,6 +41,7 @@ app.use(compression({
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
   res.sendfile('./public/index.html');
+	res.send('<h1>Helloworld</h1>');
 });
 initgame();
 
