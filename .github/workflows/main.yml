@@ -10,5 +10,5 @@ jobs:
           ...
           package name: @therookiecode5/hidedotseek
           ...
-          test command: exit 0
+
           
