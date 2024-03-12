@@ -6,7 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: | 
-          npm install
-          git add index.js package.json package-lock.json
-          git commit -m "initialize npm package"
-          git push
+          npm init
+          npm init
+          ...
+          package name: @therookiecode5/hidedotseek
+          ...
+          test command: exit 0
+          ...
