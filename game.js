@@ -2,9 +2,9 @@
 ** NODE.JS REQUIREMENTS
 **************************************************/
 var util = require("util");
-var Player = require("./Player").Player;
-var Pillar = require("./Pillar").Pillar;
-var Obstacle = require("./Obstacle").Obstacle;
+var Player = require("./Player.js").Player;
+var Pillar = require("./Pillar.js").Pillar;
+var Obstacle = require("./Obstacle.js").Obstacle;
 var express = require('express');
 var app = express();
 const { createServer } = require("http");
