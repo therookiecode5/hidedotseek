@@ -6,4 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         npm install compression
+         npm install
+          git add index.js package.json package-lock.json
+          git commit -m "initialize npm package"
+          git push
