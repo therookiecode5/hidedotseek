@@ -79,7 +79,7 @@ var Obstacle = function(startX, startY, inWidth, inHeight){
 		setImage : setImage, 
 		getImage : getImage
 		
-	}
+	};
 };
 
 exports.Obstacle = Obstacle;
