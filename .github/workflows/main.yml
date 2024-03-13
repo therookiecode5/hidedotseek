@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         npm init
+         npm init --force
           ...
           package name: @YOUR-USERNAME/YOUR-REPOSITORY
           ...
