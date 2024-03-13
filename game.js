@@ -1,15 +1,20 @@
 /**************************************************
-** NODE.JS REQUIREMENTS
+** NODE.JS REQUIREMENTS 
 **************************************************/
 var util = require("util");
 var Player = require("./Player").Player;
 var Pillar = require("./Pillar").Pillar;
 var Obstacle = require("./Obstacle").Obstacle;
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);	
+const app = require("express")();
+const httpServer = require("http").createServer(app);
+const options = { /* ... */ };
+const io = require("socket.io")(httpServer, options);	
 var compression = require('compression');
+
+
+
+
+
 
 /**************************************************
 ** GAME VARIABLES
@@ -28,17 +33,17 @@ function init() {
 	players = [];
 	obstacles = [];
 var port=80;
-http.listen(port, function(){
-  console.log('listening on *: '+port);
+httpServer.listen(port, function(){
+	 console.log('listening on *: '+port);
 });
 	
 
 app.use(compression({
-  threshold: 512
+	 threshold: 512
 }));
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
-  res.sendfile('./public/index.html');
+	 res.sendfile('./public/index.html');
 });
 initgame();
 
@@ -199,7 +204,7 @@ function onMovePlayer(data) {
 			players[i].setScore(players[i].getScore() - 100);
 			movePlayer.setScore(movePlayer.getScore() + 100);
 			io.emit("zombie",{id:players[i].id});
-		} else
+  } else
 		if (players[i].isZombie() && !movePlayer.isZombie() && !movePlayer.isTempSafe() && !movePlayer.isSafe()){
 			movePlayer.setZombie(true);
 			movePlayer.setScore(movePlayer.getScore() - 100);
