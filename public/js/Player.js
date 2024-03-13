@@ -80,14 +80,14 @@ var Player = function(startX, startY) {
 			y -= moveAmount;
 		} else if (keys.down) {
 			y += moveAmount;
-		};
+		}
 
 		// Left key takes priority over right
 		if (keys.left) {
 			x -= moveAmount;
 		} else if (keys.right) {
 			x += moveAmount;
-		};
+		}
 
 		return (prevX != x || prevY != y) ? true : false;
 	};
@@ -120,5 +120,5 @@ var Player = function(startX, startY) {
 		zombie:zombie,
 		tempSafe:tempSafe,
 		safe:safe
-	}
+	};
 };
