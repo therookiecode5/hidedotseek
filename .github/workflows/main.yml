@@ -8,4 +8,7 @@ jobs:
       - run: |
          npm --version
           npm install express
+          npm install socket.io
+          npm install compress
+          npm install compression
           npm init -y
