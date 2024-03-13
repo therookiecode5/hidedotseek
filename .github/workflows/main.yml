@@ -7,10 +7,6 @@ jobs:
     steps:
       - run: |
           npm init
-          ...
-          package name: @YOUR-USERNAME/YOUR-REPOSITORY
-          ...
-          test command: exit 0
-          ...
+
  
           
