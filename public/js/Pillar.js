@@ -85,5 +85,5 @@ var Pillar = function(startX, startY, inWidth, inHeight){
 		getImage : getImage,
 		draw:draw
 		
-	}
+	};
 };
