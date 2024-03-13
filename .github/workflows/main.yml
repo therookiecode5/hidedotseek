@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         npm install socket.io
          npm install express
          npm install compress
          npm install compression
