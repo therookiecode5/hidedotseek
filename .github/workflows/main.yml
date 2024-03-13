@@ -5,6 +5,12 @@ jobs:
     if: github.repository == 'therookiecode5/hidedotseek'
     runs-on: ubuntu-latest
     steps:
-      - run: | 
+      - run: |
+          npm init
+          ...
+          package name: @YOUR-USERNAME/YOUR-REPOSITORY
+          ...
+          test command: exit 0
+          ...
  
           
