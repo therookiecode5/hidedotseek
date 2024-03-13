@@ -66,7 +66,7 @@ var setEventHandlers = function() {
 	$("#send_name").click(function(e){
 	localPlayer.setName($("#name_text").val());
    	socket.emit("my name",{name:$("#name_text").val()});
-   	localStorage.setItem("dotname",$("#name_text").val())
+   	localStorage.setItem("dotname",$("#name_text").val());
 	$("#name").html("");
 	});}
 
@@ -102,13 +102,13 @@ var setEventHandlers = function() {
 };
 function onTouchStart(e) {
 	if (localPlayer) {
-		var touchobj = e.changedTouches[0]
+		var touchobj = e.changedTouches[0];
   		touchX= touchobj.pageX;
   		touchY= touchobj.pageY;
 	};
-};function onTouchMove(e) {
+}function onTouchMove(e) {
 	if (localPlayer) {
-		 var touchobj = e.changedTouches[0] // reference first touch point for this event
+		 var touchobj = e.changedTouches[0]; // reference first touch point for this event
 		 keys.ClearKeys();
 
   				var c={};
@@ -137,8 +137,8 @@ function onTouchStart(e) {
   				keys.onKeyDown(c);
   			}
   		}
-	
-};
+
+}
 
 function onTouchLeave(e) {
 	if (localPlayer) {
@@ -146,27 +146,27 @@ function onTouchLeave(e) {
   		
 	}
 	
-};
+}
 // Keyboard key down
 function onKeydown(e) {
 	if (localPlayer) {
 		keys.onKeyDown(e);
 	}
-};
+}
 
 // Keyboard key up
 function onKeyup(e) {
 	if (localPlayer) {
 		keys.onKeyUp(e);
-	};
-};
+	}
+}
 
 // Browser window resize
 function onResize(e) {
 	// Maximise the canvas
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-};
+}
 
 // Socket connectedouchobj = e.changedTouches[0] // reference first touch point for this event
  
@@ -175,12 +175,12 @@ function onSocketConnected() {
 
 	// Send local player data to the game server
 	socket.emit("new player", {x: localPlayer.getX(), y: localPlayer.getY()});
-};
+}
 
 // Socket disconnected
 function onSocketDisconnect() {
 	console.log("Disconnected from socket server");
-};
+}
 
 // New player
 function onNewPlayer(data) {
@@ -193,7 +193,7 @@ function onNewPlayer(data) {
 	// Add new player to the remote players array
 	remotePlayers.push(newPlayer);
 	playerById(data.id).setName(data.name);
-};
+}
 function onNewObstacle(data){
 	console.log("New obstacle get: ");
 
@@ -211,12 +211,12 @@ function onMovePlayer(data) {
 	if (!movePlayer) {
 		console.log("Player not found: "+data.id);
 		return;
-	};
+	}
 
 	// Update player position
 	movePlayer.setX(data.x);
 	movePlayer.setY(data.y);
-};
+}
 
 
 function onMoveLocalPlayer(data) {
@@ -228,7 +228,7 @@ function onMoveLocalPlayer(data) {
 	// Update player position
 	movePlayer.setX(data.x);
 	movePlayer.setY(data.y);
-};
+}
 
 // Remove player
 function onRemovePlayer(data) {
@@ -238,14 +238,14 @@ function onRemovePlayer(data) {
 	if (!removePlayer) {
 		console.log("Player not found: "+data.id);
 		return;
-	};
+	}
 
 	// Remove player from array
 	remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
-};
+}
 
 function onTempSafe(data){
-	var x = playerById(data.id)
+	var x = playerById(data.id);
 	if(x){
 		x.tempSafe=true;
 	}else{
@@ -255,7 +255,7 @@ function onTempSafe(data){
 
 
 function onSafe(data){
-	var x = playerById(data.id)
+	var x = playerById(data.id);
 	if(x){
 		x.safe=true;
 	}else{
@@ -264,7 +264,7 @@ function onSafe(data){
 }
 
 function onNotSafe(data){
-	var x = playerById(data.id)
+	var x = playerById(data.id);
 	if(x){
 		x.tempSafe=false;
 		x.safe=false;
@@ -275,7 +275,7 @@ function onNotSafe(data){
 }
 
 function onZombie(data){
-	var x = playerById(data.id)
+	var x = playerById(data.id);
 	if(x){
 		x.zombie=true;
 	}else{
@@ -283,7 +283,7 @@ function onZombie(data){
 	}
 }
 function onNewPillar(data){
-	console.log("pillar")
+	console.log("pillar");
 	pillar= new Pillar(data.x,data.y,40,40);
 
 }
@@ -319,7 +319,7 @@ function animate() {
 
 	// Request a new animation frame using Paul Irish's shim
 	window.requestAnimFrame(animate);
-};
+}
 
 
 /**************************************************
@@ -330,8 +330,8 @@ function update() {
 	if (localPlayer.update(keys)) {
 		// Send local player data to the game server
 		socket.emit("move player", {x: localPlayer.getX(), y: localPlayer.getY()});
-	};
-};
+	}
+}
 
   
 
@@ -369,7 +369,7 @@ function draw() {
 			ctx.fillStyle="#000000";
 		}
 		remotePlayers[i].draw(ctx,localPlayer.getX()-canvas.width/2,localPlayer.getY()-canvas.height/2);
-	};
+	}
 
 	var i;
 	for (i = 0; i < obstacles.length; i++) {
@@ -377,13 +377,13 @@ function draw() {
 			ctx.fillStyle="#000000";
 		
 		obstacles[i].draw(ctx,localPlayer.getX()-canvas.width/2,localPlayer.getY()-canvas.height/2);
-	};
+	}
 
 	// Draw the final point
     
       
       
-};
+}
 
 
 /**************************************************
@@ -395,7 +395,7 @@ function playerById(id) {
 	for (i = 0; i < remotePlayers.length; i++) {
 		if (remotePlayers[i].id == id)
 			return remotePlayers[i];
-	};
+	}
 	
 	return false;
-};
+}
