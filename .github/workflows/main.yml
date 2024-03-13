@@ -6,4 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         npm init --force
+         npm install --force
+          git add index.js package.json package-lock.json
+          git commit -m "initialize npm package"
+          git push
