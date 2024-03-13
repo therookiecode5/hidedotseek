@@ -6,9 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         npm init --force
-          ...
-          package name: @YOUR-USERNAME/YOUR-REPOSITORY
-          ...
-          test command: exit 0
-          ...
+         npm --version
+          npm install express
+          npm init -y
