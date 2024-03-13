@@ -39,5 +39,5 @@ var Map = function(inWidth, inHeight){
 		getHeight : getHeight,
 		setImage : setImage,
 		getImage : getImage	
-	}
+	};
 };
