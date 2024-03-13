@@ -1,4 +1,4 @@
-  "dependencies": {
+ "dependencies": {
     "compress": "^0.99.0",
     "compression": "^1.7.4",
     "express": "^4.18.3",
