@@ -6,5 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-         npm install
           npm init --force
