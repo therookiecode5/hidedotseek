@@ -1,20 +1,15 @@
 /**************************************************
-** NODE.JS REQUIREMENTS 
+** NODE.JS REQUIREMENTS
 **************************************************/
 var util = require("util");
 var Player = require("./Player").Player;
 var Pillar = require("./Pillar").Pillar;
 var Obstacle = require("./Obstacle").Obstacle;
-const app = require("express")();
-const httpServer = require("http").createServer(app);
-const options = { /* ... */ };
-const io = require("socket.io")(httpServer, options);	
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);	
 var compression = require('compression');
-
-
-
-
-
 
 /**************************************************
 ** GAME VARIABLES
@@ -32,22 +27,22 @@ function init() {
 	// Create an empty array to store players
 	players = [];
 	obstacles = [];
-var port=3000;
-httpServer.listen(port, function(){
-	 console.log('listening on *: '+port);
+var port=80;
+http.listen(port, function(){
+  console.log('listening on *: '+port);
 });
 	
 
 app.use(compression({
-	 threshold: 512
-}));
+  threshold: 512
+}))
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
-	 res.sendfile('./public/index.html');
+  res.sendfile('./public/index.html');
 });
 initgame();
 
-}
+};
 
 
 
@@ -78,7 +73,7 @@ function initgame(){
 		obstacles.length=0;
 	}
 	for (var i=0;i<20;i++){
-		x=Math.round(Math.random()*2000),
+		var x=Math.round(Math.random()*2000),
 		y=Math.round(Math.random()*2000),
 		h=Math.round(Math.random()*100+1),
 		w=Math.round(Math.random()*100+1);
@@ -99,14 +94,14 @@ function onClientDisconnect(initgame) {
 	if (!removePlayer) {
 		util.log("Player not found: "+this.id);
 		return;
-	}
+	};
 
 	// Remove player from players array
 	players.splice(players.indexOf(removePlayer), 1);
 
 	// Broadcast removed player to connected socket clients
 	this.broadcast.emit("remove player", {id: this.id});
-}
+};
 
 // New player has joined
 function onNewPlayer(data) {
@@ -141,14 +136,14 @@ function onNewPlayer(data) {
 		if (existingPlayer.isZombie()) {
 			this.emit("zombie", {id:existingPlayer.id});
 		}
-	}
+	};
 	var wall;
 	for (i = 0; i < obstacles.length; i++) {
 		wall = obstacles[i];
 		
 		this.emit("new obstacle",{x:wall.getX(),y:wall.getY(),w:wall.getWidth(),h:wall.getHeight()});
 		
-	}
+	};
 		
 	// Add new player to the players array
 	players.push(newPlayer);
@@ -163,7 +158,7 @@ function onNewPlayer(data) {
 	}
 
 	this.emit("new pillar",{x:pillar.getX(),y:pillar.getY(),w:pillar.getWidth(),h:pillar.getHeight()});
-}
+};
 
 // Player has moved
 function onMovePlayer(data) {
@@ -186,7 +181,7 @@ function onMovePlayer(data) {
 	if (!movePlayer) {
 		util.log("Player not found: "+this.id);
 		return;
-	}
+	};
 	collision = false;
 	// Update player position
 	if (data.x>2000 || data.x<0 || data.y>2000 || data.y<0){
@@ -204,7 +199,7 @@ function onMovePlayer(data) {
 			players[i].setScore(players[i].getScore() - 100);
 			movePlayer.setScore(movePlayer.getScore() + 100);
 			io.emit("zombie",{id:players[i].id});
-  } else
+		} else
 		if (players[i].isZombie() && !movePlayer.isZombie() && !movePlayer.isTempSafe() && !movePlayer.isSafe()){
 			movePlayer.setZombie(true);
 			movePlayer.setScore(movePlayer.getScore() - 100);
@@ -214,9 +209,6 @@ function onMovePlayer(data) {
 			lastx=movePlayer.getX();
 			lasty=movePlayer.getY();
 			other=players[i];
-		}
-	}
-}
 			setTimeout(function(){
 				var delta=5001;
 				if(movePlayer.timeout){
@@ -233,6 +225,9 @@ function onMovePlayer(data) {
 				}
 			}, 500);
 
+		}
+	}
+}
 	if (data.x+10>pillar.getX() && data.x<pillar.getX()+pillar.getWidth() &&
 			data.y+10>pillar.getY() && data.y<pillar.getY()+pillar.getHeight()) {
 			collision=true;
@@ -262,7 +257,7 @@ function onMovePlayer(data) {
 	
 
 	// Broadcast updated position to connected socket clients
-}
+};
 
 function checkWinner(){
 	if (gameOver) {
@@ -316,10 +311,10 @@ function playerById(id) {
 	for (i = 0; i < players.length; i++) {
 		if (players[i].id == id)
 			return players[i];
-	}
+	};
 	
 	return false;
-}
+};
 
 
 /**************************************************
