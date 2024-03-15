@@ -79,7 +79,7 @@ var Pillar = function(startX, startY, inWidth, inHeight){
 		setImage : setImage, 
 		getImage : getImage
 		
-	};
+	}
 };
 
 exports.Pillar = Pillar;
