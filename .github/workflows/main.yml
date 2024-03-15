@@ -7,7 +7,4 @@ jobs:
     steps:
       - run: |
           npm init --force
-          npm install socket.io
-          npm install express
-          npm install compress
-          npm install compression
+ 
