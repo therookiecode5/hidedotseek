@@ -8,7 +8,7 @@ var Obstacle = function(startX, startY, inWidth, inHeight){
 		width = inWidth,
 		height = inHeight,
 		image,
-		visible = true;
+		visible = false;
 	
 	// Getter and Setter
 	var setWidth = function(newWidth){
@@ -79,7 +79,7 @@ var Obstacle = function(startX, startY, inWidth, inHeight){
 		setImage : setImage, 
 		getImage : getImage
 		
-	};
+	}
 };
 
 exports.Obstacle = Obstacle;
