@@ -85,7 +85,7 @@ var Player = function(startX, startY) {
 		getName: getName,
 		setScore: setScore,
 		getScore: getScore
-	};
+	}
 };
 
 // Export the Player class so you can use it in
