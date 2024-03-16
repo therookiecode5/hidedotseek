@@ -7,4 +7,3 @@ jobs:
     steps:
       - run: |
           npm init
-
